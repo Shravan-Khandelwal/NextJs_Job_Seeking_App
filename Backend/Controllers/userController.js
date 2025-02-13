@@ -113,7 +113,15 @@ async function logInUser(req, res, next) {
   const JWTTOKEN = await GenerateToken(userData, res, next);
 
   //! SETTING THE COOKIES
-  res.cookie("token", JWTTOKEN);
+  // res.cookie("token", JWTTOKEN);
+  
+  res.cookie("token", JWTTOKEN, {
+  httpOnly: true,          // Makes the cookie accessible only by the server
+  secure: true,            // Always set it to true for secure cookies in production
+  sameSite: "None",        // Allow the cookie to be sent across different domains
+  maxAge: 3600000,         // Cookie expiration time (1 hour)
+});
+
   req.user = userDetails;
 
   return res.status(200).json({
