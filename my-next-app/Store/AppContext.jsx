@@ -45,33 +45,77 @@ function AppContextProvider({ children }) {
 
   //! FOR CHECKING IF THE USER IS LOGGED IN OR NOT
   useEffect(() => {
-    const getCookie = (name) => {
-      const cookieArr = document.cookie.split(";");
-      console.log("COOKIE ARRAY");
-      console.log(cookieArr);
+    // const getCookie = (name) => {
+    //   const cookieArr = document.cookie.split(";");
+    //   console.log("COOKIE ARRAY");
+    //   console.log(cookieArr);
       
-      for (let cookie of cookieArr) {
-        const [key, value] = cookie.trim().split("=");
-        if (key === name) {
-          return value;
+    //   for (let cookie of cookieArr) {
+    //     const [key, value] = cookie.trim().split("=");
+    //     if (key === name) {
+    //       return value;
+    //     }
+    //   }
+    //   return null;
+    // };
+
+     const fetchToken = async () => {
+      try {
+        const res = await fetch(
+          "https://nextjs-job-seeking-app.onrender.com/api/auth/check-login",
+          {
+            method: "GET",
+            credentials: "include", // Ensure cookies are sent with request
+          }
+        );
+
+        if (!res.ok) throw new Error("Not logged in");
+
+        const { token } = await res.json();
+        console.log("JWT Token:", token);
+
+        if (token) {
+          const decoded = jwtDecode(token);
+          setUserDetails(decoded.userData);
+        } else {
+          setUserDetails(null);
+          console.log("No token found");
         }
+      } catch (error) {
+        console.error("Error fetching token:", error);
+        setUserDetails(null);
       }
-      return null;
-    };
 
-    const jwtToken = getCookie("token");
-     console.log("JWT Token");
-      console.log(jwtToken);
+       
 
-    if (jwtToken) {
-      const decoded = jwtDecode(jwtToken);
+    // const jwtToken = getCookie("token");
+    //  console.log("JWT Token");
+    //   console.log(jwtToken);
 
-      setUserDetails(decoded.userData); // Assuming the token contains a `user` field
-    } else {
-      setUserDetails(null);
-      console.log("No token found");
-    }
+    // if (jwtToken) {
+    //   const decoded = jwtDecode(jwtToken);
+
+    //   setUserDetails(decoded.userData); // Assuming the token contains a `user` field
+    // } else {
+    //   setUserDetails(null);
+    //   console.log("No token found");
+    // }
+
+
+
+fetchToken();
+       
   }, [IsLoggedIn]);
+
+
+
+
+
+
+
+
+
+    
 
   // ! Fetching The HR Jobs Listing
   useEffect(() => {
