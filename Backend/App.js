@@ -48,6 +48,17 @@ App.get("/", (req, res) => {
   return res.send("Hello World!");
 });
 
+App.get("/api/auth/check-login", (req, res) => {
+  const token = req.cookies.token; // Access token from cookies
+
+  if (!token) {
+    return res.status(401).json({ message: "Not logged in" });
+  }
+
+  res.json({ token });
+});
+
+
 // ! ERROR MIDDLEWARE
 App.use(errorHandler);
 
