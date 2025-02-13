@@ -22,7 +22,7 @@ function ApplicationsRecived() {
 
       try {
         const response = await fetch(
-          "https://nextjs-job-seeking-app-g4py.onrender.com/api/applicationRoutes/JobManagerGetAllJobApplications",
+          "https://nextjsappjobseeking.vercel.app/api/applicationRoutes/JobManagerGetAllJobApplications",
           {
             method: "GET",
             credentials: "include",
