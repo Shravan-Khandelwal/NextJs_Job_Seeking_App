@@ -73,7 +73,7 @@ function AppContextProvider({ children }) {
     async function Fetch_HR_Jobs_Listing() {
       try {
         const response = await fetch(
-          "https://nextjs-job-seeking-app-g4py.onrender.com/api/jobRoutes/getMyJobs",
+          "https://nextjs-job-seeking-app.onrender.com/api/jobRoutes/getMyJobs",
           { method: "GET", credentials: "include" }
         );
 
@@ -95,7 +95,7 @@ function AppContextProvider({ children }) {
     async function fetchAllJobs() {
       try {
         const response = await fetch(
-          "https://nextjs-job-seeking-app-g4py.onrender.com/api/jobRoutes/getAllJobs",
+          "https://nextjs-job-seeking-app.onrender.com/api/jobRoutes/getAllJobs",
           {
             method: "GET",
             credentials: "include",
@@ -168,7 +168,7 @@ function AppContextProvider({ children }) {
     async function FetchCompaniesList() {
       try {
         const response = await fetch(
-          "https://nextjs-job-seeking-app-g4py.onrender.com/api/userRoutes/FetchCompaniesList",
+          "https://nextjs-job-seeking-app.onrender.com/api/userRoutes/FetchCompaniesList",
           {
             method: "GET",
             credentials: "include",
@@ -180,7 +180,7 @@ function AppContextProvider({ children }) {
         // if (result.JobList.length > 0) {
         //   result.JobList.map((Job) => {
         //     const JobDetails = await fetch(
-        //       "https://nextjs-job-seeking-app-g4py.onrender.com/api/jobRoutes/FindJobByID/:id"
+        //       "https://nextjs-job-seeking-app.onrender.com/api/jobRoutes/FindJobByID/:id"
         //     );
         //   });
         // }
@@ -217,7 +217,7 @@ function AppContextProvider({ children }) {
       formData.append("jobId", jobId);
 
       const response = await fetch(
-        "https://nextjs-job-seeking-app-g4py.onrender.com/api/applicationRoutes/postApplication",
+        "https://nextjs-job-seeking-app.onrender.com/api/applicationRoutes/postApplication",
         {
           method: "POST",
           credentials: "include",
