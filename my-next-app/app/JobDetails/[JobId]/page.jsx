@@ -21,7 +21,7 @@ function JobDetailsId() {
         if (!JobId) return;
 
         const response = await fetch(
-          `https://nextjs-job-seeking-app-g4py.onrender.com/api/jobRoutes/FindJobByID/${JobId}`,
+          `https://nextjsappjobseeking.vercel.app/api/jobRoutes/FindJobByID/${JobId}`,
           {
             method: "GET",
             credentials: "include",
