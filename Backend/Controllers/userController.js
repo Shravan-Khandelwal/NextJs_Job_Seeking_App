@@ -119,7 +119,7 @@ async function logInUser(req, res, next) {
   httpOnly: true,          // Makes the cookie accessible only by the server
   secure: true,            // Always set it to true for secure cookies in production
   sameSite: "None",        // Allow the cookie to be sent across different domains
-  maxAge: 3600000,         // Cookie expiration time (1 hour)
+  expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
 });
 
   req.user = userDetails;
