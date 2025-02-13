@@ -47,6 +47,9 @@ function AppContextProvider({ children }) {
   useEffect(() => {
     const getCookie = (name) => {
       const cookieArr = document.cookie.split(";");
+      console.log("COOKIE ARRAY");
+      console.log(cookieArr);
+      
       for (let cookie of cookieArr) {
         const [key, value] = cookie.trim().split("=");
         if (key === name) {
@@ -57,6 +60,8 @@ function AppContextProvider({ children }) {
     };
 
     const jwtToken = getCookie("token");
+     console.log("JWT Token");
+      console.log(jwtToken);
 
     if (jwtToken) {
       const decoded = jwtDecode(jwtToken);
