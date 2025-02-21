@@ -145,7 +145,7 @@ async function logOutUser(req, res) {
   //   console.log(error.message);
   // }
    if (req.cookies.token) {
-    res.clearCookie("token");
+    res.clearCookie("token", { path: "/" });
      console.log("After:", req.cookies.token);
     res.status(200).json({ message: "Logout successful" });
   } else {
