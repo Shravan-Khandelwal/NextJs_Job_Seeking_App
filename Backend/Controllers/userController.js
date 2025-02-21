@@ -134,18 +134,19 @@ async function logInUser(req, res, next) {
 
 //! Function for Log Out The User
 async function logOutUser(req, res) {
-  // try {
-  //   res.clearCookie("token");
 
-  //   return res.status(200).json({
-  //     success: true,
-  //     message: "User logged out successfully",
-  //   });
-  // } catch (error) {
-  //   console.log(error.message);
-  // }
    if (req.cookies.token) {
-    res.clearCookie("token", { path: "/" });
+    // res.clearCookie("token", { path: "/" });
+
+
+       res.cookie("token", "", {
+  httpOnly: true,          // Makes the cookie accessible only by the server
+  secure: true,            // Always set it to true for secure cookies in production
+  sameSite: "None",        // Allow the cookie to be sent across different domains
+});
+
+
+     
      console.log("After:", req.cookies.token);
     res.status(200).json({ message: "Logout successful" });
   } else {
