@@ -134,25 +134,27 @@ async function logInUser(req, res, next) {
 
 //! Function for Log Out The User
 async function logOutUser(req, res) {
+  try {
+    if (req.cookies.token) {
+      // Clearing the token cookie
+      res.cookie("token", "", {
+        httpOnly: true,  // Secure cookie (accessible only by the server)
+        secure: true,    // Ensures it's sent over HTTPS
+        sameSite: "None", // Allows cross-site requests
+        expires: new Date(0), // Immediately expires the cookie
+      });
 
-   if (req.cookies.token) {
-    // res.clearCookie("token", { path: "/" });
+      console.log("After clearing:", req.cookies.token);
+      return res.status(200).json({ message: "Logout successful" });
+    } 
 
-
-       res.cookie("token", "", {
-  httpOnly: true,          // Makes the cookie accessible only by the server
-  secure: true,            // Always set it to true for secure cookies in production
-  sameSite: "None",        // Allow the cookie to be sent across different domains
-});
-
-
-     
-     console.log("After:", req.cookies.token);
-    res.status(200).json({ message: "Logout successful" });
-  } else {
-    res.status(400).json({ message: "User already logged out or token missing" });
+    return res.status(400).json({ message: "User already logged out or token missing" });
+  } catch (error) {
+    console.error("Logout Error:", error.message);
+    return res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 }
+
 
 // ! Function To Get All the Users
 async function getAllUsers(req, res, next) {
