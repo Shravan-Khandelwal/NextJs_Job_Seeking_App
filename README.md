@@ -2,7 +2,9 @@
 
 # 🚀 JobSeek - The Ultimate Job Seeking Platform
 
+🚀 Live Demo: [Click Here](https://next-js-job-seeking-app-ddb1.vercel.app/) 
 Welcome to **JobSeek** – a powerful and user-friendly job-seeking platform that connects HR professionals and job seekers in one seamless experience. 🎯
+
 
 ## 🌟 Features
 
@@ -28,11 +30,7 @@ Welcome to **JobSeek** – a powerful and user-friendly job-seeking platform tha
 | **Tailwind CSS** | Responsive Styling |
 | **JWT Authentication** | Secure Login & Authorization |
 
----
-
-## 🎬 Demo (Coming Soon!)
-🚀 Live Demo: [Click Here](#)  
-🎥 Video Walkthrough: [Watch Here](#)  
+--- 
 
 ---
 
