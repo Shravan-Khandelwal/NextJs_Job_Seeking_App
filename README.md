@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/35c1b92c-ade3-459f-92b7-e73702c55e9f)
+
 # 🚀 JobSeek - The Ultimate Job Seeking Platform
 
 Welcome to **JobSeek** – a powerful and user-friendly job-seeking platform that connects HR professionals and job seekers in one seamless experience. 🎯
